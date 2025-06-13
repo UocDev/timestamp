@@ -1,5 +1,5 @@
 {
-  "name": "@UocDev/timestamp-uoc",
+  "name": "@uocdev/timestamp-uoc",
   "version": "1.0.0",
   "description": "My awesome NPM package",
   "main": "index.js",
