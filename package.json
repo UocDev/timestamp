@@ -1,15 +1,15 @@
 {
-  "name": "nodejs",
+  "name": "@UocDev/timestamp-uoc",
   "version": "1.0.0",
-  "description": "",
+  "description": "My awesome NPM package",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UocDev/timestamp.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/node": "^22.13.11"
+  "author": "Uoc",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
   }
 }
