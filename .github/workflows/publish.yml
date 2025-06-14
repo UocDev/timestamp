@@ -26,7 +26,25 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
+      - name: 🧠 Check if version already published
+        id: check-version
+        run: |
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
+
+          echo "📦 Package: $PKG_NAME"
+          echo "📌 Version: $PKG_VERSION"
+
+          if npm view "$PKG_NAME@$PKG_VERSION" version > /dev/null 2>&1; then
+            echo "✅ Already published: $PKG_NAME@$PKG_VERSION"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "🚀 Ready to publish: $PKG_NAME@$PKG_VERSION"
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: 🚀 Publish package
-        run: npm publish
+        if: steps.check-version.outputs.skip != 'true'
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
