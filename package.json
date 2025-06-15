@@ -11,5 +11,9 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "luxon": "^3.6.1"
   }
 }
