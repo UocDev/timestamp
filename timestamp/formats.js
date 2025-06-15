@@ -1,4 +1,4 @@
-const { getConfig } = require('../init');
+const { getConfig } = require('./init');
 
 function getUnix(input = Date.now()) {
   const date = new Date(input);

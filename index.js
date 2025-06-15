@@ -1,5 +1,5 @@
-const { getDiscordTimestamp, getISOTime, getUnix, now } = require('../formats');
-const { init } = require('../init')
+const { getDiscordTimestamp, getISOTime, getUnix, now } = require('./timestamp/formats.js');
+const { init } = require('./timestamp/init.js')
 
 module.exports = {
   discord: getDiscordTimestamp,
