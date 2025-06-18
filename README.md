@@ -16,8 +16,11 @@ const {
   unix,
   discordFull,
   htmlTime,
-  androidISO
+  androidISO,
+  saveTimestamp
 } = require('@uocdev/timestamp-hasei');
+
+const filePath = saveTimestamp('id-ID')  // saveTimestamp when run this script
 
 console.log(now());                    // e.g., "18/06/2025, 15:00:00"
 console.log(unix());                   // e.g., 1718727000000
@@ -32,7 +35,8 @@ console.log(androidISO());            // e.g., "2025-06-18T15:00:00.000Z"
 | `unix()`| Get current UNIX timestamp in milliseconds | `1718727000000` |
 | `discordFull()`| Get full Discord `<t:...:F>` timestamp string | `<t:1718727000:F>` |
 | `htmlTime()` | Get a semantic HTML `<time>` element with ISO string |`<time datetime="...">Wed Jun 18 2025</time>` |
-| `androidISO()` | Get ISO string for Android Date/Java compatible format | `2025-06-18T15:00:00.000Z` |
+|`androidISO()` | Get ISO string for Android Date/Java compatible format | `2025-06-18T15:00:00.000Z` |
+| `saveTimestamp()` | Save currently Timestamp to `./logs/*.txt` file | `logs/timestamp-2025-6-18.txt`
 
 **Platform Support**
 | Platform     | Works With  | Notes  |
