@@ -8,6 +8,8 @@ const setConfig = require('./src/config/setConfig');
 const getConfig = require('./src/config/getConfig');
 const ensureConfigDir = require('./src/config/ensureConfigDir')
 
+ensureConfigDir();
+
 module.exports = {
   now,
   unix,
