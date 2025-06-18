@@ -3,7 +3,8 @@ const path = require('path');
 const now = require('./now');
 
 function saveTimestamp(locale = 'id-ID') {
-  const folderPath = path.join(__dirname, '..', 'logs');
+  const rootDir = process.cwd(); // 🔥 Where the app was run
+  const folderPath = path.join(rootDir, 'logs'); // logs/ in main project
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath);
   }
@@ -15,7 +16,7 @@ function saveTimestamp(locale = 'id-ID') {
   const timestamp = now(locale);
   fs.appendFileSync(filePath, `[${timestamp}]\n`, 'utf8');
 
-  return filePath; // Return path to confirm
+  return filePath;
 }
 
 module.exports = saveTimestamp;
