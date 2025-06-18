@@ -8,62 +8,39 @@ npm install @uocdev/timestamp-hasei
 ```
 
 ## ⚒️ Module & Features 
-1. environment<br>
-custom configuration directory for your application
+### 1. Timestamp 
+Example:
 ```js
-const env = require('my-utils-lib').environment;
+const {
+  now,
+  unix,
+  discordFull,
+  htmlTime,
+  androidISO
+} = require('@uocdev/timestamp-hasei');
 
-env.setEnvironment({
-  timezone: 'Asia/Jakarta',
-  defaultFormat: 'f',
-});
-
-console.log(env.getEnv('timezone')); // Asia/Jakarta
-console.log(env.getAllEnv());
+console.log(now());                    // e.g., "18/06/2025, 15:00:00"
+console.log(unix());                   // e.g., 1718727000000
+console.log(discordFull());            // e.g., "<t:1718727000:F>"
+console.log(htmlTime());              // e.g., <time datetime="...">Wed Jun 18 2025</time>
+console.log(androidISO());            // e.g., "2025-06-18T15:00:00.000Z"
 ```
 **Method**
-| Method   | Description   |
-|------------|------------|
-| `setEnvironment(opts)` | Set Timezone, Formats, etc|
-| `getEnv(key)`| Get specific config |
-| `getAllEnv()`| Get all Environment variabel values |
-| `resetEnvironment` | Reset to default values |
+| Function   | Description   | Output Example  |
+|------------|---------------|------------------
+| `now(locale)` | Get current time formatted by locale (default:`id-ID`)| `18/06/2025, 15:00:00"` |
+| `unix()`| Get current UNIX timestamp in milliseconds | `1718727000000` |
+| `discordFull()`| Get full Discord `<t:...:F>` timestamp string | `<t:1718727000:F>` |
+| `htmlTime()` | Get a semantic HTML `<time>` element with ISO string |`<time datetime="...">Wed Jun 18 2025</time>` |
+| `androidISO()` | Get ISO string for Android Date/Java compatible format | `2025-06-18T15:00:00.000Z` |
 
-2. Timestamp<br>
-timestamp formatting handlers, support discord and global applications
-```js
-const ts = require('my-utils-lib').timestamp;
-
-ts.init({ defaultFormat: 'R' }); // Optional setup
-
-console.log(ts.discord(Date.now(), 'F')); // <t:UNIX:F>
-console.log(ts.iso());                    // 2025-06-13T12:34:56.000Z
-console.log(ts.unix());                   // 1718290000
-```
-**Method**
-| Method   | Description   |
-|------------|------------|
-| `init(opts)`| Set default Timezone/format|
-| `discord(date, format)` | Output `<t:UNIX:format` String |
-| `iso(date)` | Return ISO string |
-| `unix(date)` | Return UNIX Timestamp |
-| `now()` | Return `Date` Object |
-
-**Format Codes (Discord):**
-
-t: Short time (16:20)
-
-T: Long time (16:20:30)
-
-d: Short date (13/06/2025)
-
-D: Long date (13 June 2025)
-
-f: Full date + time (13 June 2025 16:20)
-
-F: Day, date & time (Friday, 13 June 2025 16:20)
-
-R: Relative (in 2 hours)
+**Platform Support**
+| Platform     | Works With  | Notes  |
+|--------------|-------------|--------|
+| Discord | Node.js/ discord.js | Use `discordFull()` for message embeds |
+| Website | Vanilla JS or bundler | `htmlTime()` and `now()` work directly |
+| Android | WebView / JS Engines | Use `androidISO()` or `unix()` |
+| Windows/Linux | Node.js, Electron, CLI | All functions supported natively |
 
 ## 💬 Feedback / Issue?
 We are open source project, free feel open PR(s) for make this package better.
