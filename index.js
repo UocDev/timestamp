@@ -3,8 +3,7 @@ const unix = require('./src/timestamp/unix');
 const discordFull = require('./src/timestamp/discordFull');
 const htmlTime = require('./src/timestamp/htmlTime');
 const androidISO = require('./src/timestamp/androidISO');
-
-const saveTimestamp = require('./src/config/saveTimestamp')
+const saveTimestamp = require('./src/saveTimestamp')
 
 module.exports = {
   now,
