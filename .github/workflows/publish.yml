@@ -6,15 +6,38 @@ on:
       - 'v*' # only publish on version tags like v1.0.0
 
 jobs:
+  test-matrix:
+    name: 🔎 Test on Safe LTS (18, 20, 22)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - name: 🧾 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🧰 Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: ✅ Run tests
+        run: npm test # or replace with your own test script
+
   publish:
-    name: 📦 NPM Publish
+    name: 📦 Publish to NPM
+    needs: test-matrix # ✅ wait until tests pass
     runs-on: ubuntu-latest
 
     steps:
       - name: 🧾 Checkout code
         uses: actions/checkout@v4
 
-      - name: 🧰 Setup Node
+      - name: 🧰 Setup Node.js 18 (safe publish version)
         uses: actions/setup-node@v4
         with:
           node-version: 18
