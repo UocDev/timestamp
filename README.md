@@ -30,6 +30,7 @@ console.log(discordFull());            // e.g., "<t:1718727000:F>"
 console.log(htmlTime());              // e.g., <time datetime="...">Wed Jun 18 2025</time>
 console.log(androidISO());            // e.g., "2025-06-18T15:00:00.000Z"
 ```
+
 **Method**
 | Function   | Description   | Output Example  |
 |------------|---------------|------------------
@@ -40,6 +41,7 @@ console.log(androidISO());            // e.g., "2025-06-18T15:00:00.000Z"
 |`androidISO()` | Get ISO string for Android Date/Java compatible format | `2025-06-18T15:00:00.000Z` |
 | `saveTimestamp()` | Save currently Timestamp to `./logs/*.txt` file | `logs/timestamp-2025-6-18.txt`
 
+
 **Platform Support**
 | Platform     | Works With  | Notes  |
 |--------------|-------------|--------|
@@ -47,6 +49,39 @@ console.log(androidISO());            // e.g., "2025-06-18T15:00:00.000Z"
 | Website | Vanilla JS or bundler | `htmlTime()` and `now()` work directly |
 | Android | WebView / JS Engines | Use `androidISO()` or `unix()` |
 | Windows/Linux | Node.js, Electron, CLI | All functions supported natively |
+
+### 1.1 Encode / Decode (Timestamp)
+Example:
+```js
+const {
+  now,
+  base64Encode,
+  base64Decode,
+  utfEncode,
+  utfDecode
+} = require('@uocdev/timestamp-hasei');
+
+const timestamp = now();
+
+const base64 = base64Encode(timestamp);
+const decodedBase64 = base64Decode(base64);
+
+const utf = utfEncode(timestamp);
+const decodedUtf = utfDecode(utf);
+
+console.log("Original:", timestamp);
+console.log("Base64 Encoded:", base64);
+console.log("Base64 Decoded:", decodedBase64);
+console.log("UTF-8 Encoded:", utf);
+console.log("UTF-8 Decoded:", decodedUtf);
+```
+**Method**
+| Function | Description | Output Example |
+|----------|-------------|----------------|
+|`base64Encode(str)` |Encode timestamp as Base64 string |`MTgvMDYvMjAyNSwgMjM6NTk6NTk=` |
+|`base64Decode(str)` |Decode Base64 string back to UTF-8 |`18/06/2025, 23:59:59` |
+|`utfEncode(str)` |Encode timestamp as UTF-8 Buffer |`<Buffer 31 38 2f ...>` |
+|`utfDecode(buffer)` |Decode UTF-8 Buffer back to readable string |`18/06/2025, 23:59:59` |
 
 ## 💬 Feedback / Issue?
 We are open source project, free feel open PR(s) for make this package better.
