@@ -8,8 +8,6 @@ npm install @uocdev/timestamp-hasei
 ```
 
 ## ⚒️ Module & Features 
-> [!CAUTION]
-> for users use Node version 18 it will get some errors, we move from node v18 into node v20
 ### 1. Timestamp 
 Example:
 ```js
@@ -50,7 +48,7 @@ console.log(androidISO());            // e.g., "2025-06-18T15:00:00.000Z"
 | Android | WebView / JS Engines | Use `androidISO()` or `unix()` |
 | Windows/Linux | Node.js, Electron, CLI | All functions supported natively |
 
-### 1.1 Encode / Decode (Timestamp)
+### 1.1 Encode / Decode
 Example:
 ```js
 const {
@@ -82,6 +80,32 @@ console.log("UTF-8 Decoded:", decodedUtf);
 |`base64Decode(str)` |Decode Base64 string back to UTF-8 |`18/06/2025, 23:59:59` |
 |`utfEncode(str)` |Encode timestamp as UTF-8 Buffer |`<Buffer 31 38 2f ...>` |
 |`utfDecode(buffer)` |Decode UTF-8 Buffer back to readable string |`18/06/2025, 23:59:59` |
+
+### 1.2 Timezone / Compare GMT UTC
+Example:
+```js
+const { getTimezoneInfo, compareGmtUtc } = require('@uocdev/timestamp-hasei');
+
+const info = getTimezoneInfo();
+console.log("Timezone Info:");
+console.log("Timezone Name:", info.timezoneName);
+console.log("GMT Offset:", info.gmtOffset);
+console.log("UTC Offset:", info.utcOffset);
+console.log("Raw Offset (minutes):", info.rawOffsetMinutes);
+
+const result = compareGmtUtc();
+
+console.log("GMT Format:", result.gmtFormatted);
+console.log("UTC Format:", result.utcFormatted);
+console.log("Are GMT and UTC Equal Right Now?", result.areEqual ? "Yes" : "No");
+```
+**Method**
+| Function | Description | Output Example |
+|----------|-------------|----------------|
+|`getTimezoneInfo()` | Return object with GMT/UTC offset & name | `{ gmtOffset: 'GMT+07', ... }` |
+|`compareGmtUtc()` | Compares current GMT and UTC formats |`{ gmtFormatted, utcFormatted, areEqual }` |
+
+
 
 ## 💬 Feedback / Issue?
 We are open source project, free feel open PR(s) for make this package better.
