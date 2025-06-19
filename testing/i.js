@@ -1,4 +1,3 @@
-// index.js
-const { getLocalTime } = require('./t.js');
-
-console.log(`🕒 What time is it [Local Time]? It's ${getLocalTime()}`);
+const { now, saveTimestamp } = require('../index');
+const filePath = saveTimestamp('id-ID');
+console.log(now());
