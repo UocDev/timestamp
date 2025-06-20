@@ -10,6 +10,10 @@ const utfEncode = require('./src/timestamp/utfEncode');
 const utfDecode = require('./src/timestamp/utfDecode');
 const getTimezoneInfo = require('./src/timestamp/timezoneInfo');
 const compareGmtUtc = require('./src/timestamp/compareGmtUtc');
+const syncTimeFrom = require('./src/timestamp/syncTimeFrom');
+const syncTime = require('./src/timestamp/syncTime');
+const syncAndCorrect = require('./src/timestamp/syncAndCorrect');
+const autoSync = require('./src/timestamp/autoSync');
 
 module.exports = {
   now,
@@ -23,6 +27,10 @@ module.exports = {
   utfEncode,
   utfDecode,
   getTimezoneInfo,
-  compareGmtUtc
+  compareGmtUtc,
+  syncTimeFrom,
+  syncTime,
+  syncAndCorrect,
+  autoSync
 };
 // require some others packages timestamp for good results,  this is still wip but thank you for using my package :D
