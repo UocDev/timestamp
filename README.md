@@ -105,7 +105,49 @@ console.log("Are GMT and UTC Equal Right Now?", result.areEqual ? "Yes" : "No");
 |`getTimezoneInfo()` | Return object with GMT/UTC offset & name | `{ gmtOffset: 'GMT+07', ... }` |
 |`compareGmtUtc()` | Compares current GMT and UTC formats |`{ gmtFormatted, utcFormatted, areEqual }` |
 
+### 1.3 Synchronized
+Example:
+```js
+// syncTime()
+const { syncTime } = require('@uocdev/timestamp-hasei');
 
+syncTime((err, result) => {
+  if (err) return console.error('❌ Sync failed:', err.message);
+
+  console.log('Synced Time:', result.syncedTime.toISOString());
+  console.log('Local Time:', result.localTime.toISOString());
+  console.log('Drift:', result.driftMilliseconds, 'ms');
+  console.log('Timezone:', result.timezone);
+});
+
+// syncTimeFrom()
+const { syncTimeFrom } = require('@uocdev/timestamp-hasei');
+syncTimeFrom('https://worldtimeapi.org/api/timezone/Asia/Tokyo', console.log);
+
+// syncAndCorrect()
+const { syncAndCorrect } = require('@uocdev/timestamp-hasei');
+syncAndCorrect((err, data) => {
+  if (!err) {
+    console.log("✅ Corrected Time:", data.correctedTime.toISOString());
+  }
+});
+
+// autoSync()
+const { autoSync } = require('@uocdev/timestamp-hasei');
+
+const interval = autoSync(10000, (data) => {
+  console.log("🔁 Auto Synced:", data.syncedTime.toISOString(), "Drift:", data.driftSeconds, "s");
+});
+
+// To stop auto sync: clearInterval(interval);
+```
+**Method**
+| Function | Description | Output Example |
+|----------|-------------|----------------|
+|`syncTime(cb)`|Sync with default API `(worldtimeapi.org)`|`{ syncedTime, drift }`|
+|`syncTimeFrom(url, cb)`|Sync with custom API (must return datetime field)|`{ syncedTime, drift }`|
+|`syncAndCorrect(cb)`|Returns corrected local time removing drift|`{ correctedTime, ... }`|
+|`autoSync(ms, cb)`|Auto-sync every X milliseconds|`setInterval` reference|
 
 ## 💬 Feedback / Issue?
 We are open source project, free feel open PR(s) for make this package better.
