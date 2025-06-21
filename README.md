@@ -1,5 +1,5 @@
 #  ⏰ Timestamp
-The open source package files for Node.js / Javascript and multi-purpose utility library built for Discord bots, backend apps, and modern JS tools — featuring modular support for timestamps, environment config, and more.
+The open source package files for Node.js / Javascript and multi-purpose utility library built for Discord bots, backend apps, and modern JS tools — featuring modular support for timestamps, environment config, encode or decode, synchronized, schedule and more!.
 
 ## 📦 Installation
 
@@ -149,6 +149,50 @@ const interval = autoSync(10000, (data) => {
 |`syncAndCorrect(cb)`|Returns corrected local time removing drift|`{ correctedTime, ... }`|
 |`autoSync(ms, cb)`|Auto-sync every X milliseconds|`setInterval` reference|
 
+### 1.4 Schedule
+Example:
+```js
+const {
+  scheduleAt,
+  scheduleIn,
+  scheduleRepeat,
+  scheduleCron
+} = require('@uocdev/timestamp-hasei');
+
+// Run 5 seconds from now
+scheduleIn(5000, () => console.log('⏱️ 5 seconds passed'));
+
+// Run at exact time
+scheduleAt('2025-06-19T15:00:00Z', (err, time) => {
+  if (!err) console.log('📌 Ran at', time.toISOString());
+});
+
+// Repeat every 10 seconds
+scheduleRepeat(10000, (time) => console.log('🔁 Repeated at', time.toISOString()));
+
+// Daily at 18:30
+scheduleCron('18:30', (time) => console.log('🕒 CRON triggered at', time.toLocaleTimeString()));
+```
+**Method**
+| Function | Description | Output Example |
+|----------|-------------|----------------|
+|`scheduleAt(date, cb)`|Schedule task for a future timestamp|`2025-06-19T15:00`|
+|`scheduleIn(ms, CD)`|Delay execution for X ms|`5000`|
+|`scheduleRepeat(ms, cb)`|Repeat every X ms|`10000`|
+|`scheduleCron("HH:MM", cb)`|Schedule at a fixed time every day|`"22:15"`|
+
+## 🐞 Know Error
+HTTP Error (Synchronized): Because we use free API this can make you disconnected from timestamp<br>
+Module Not Found: Some module not properly when importing<br>
+Import Error/Module Error: We use CommonJS import `const` not use ESM Import (open pull request for ide/how to configure this)
+
 ## 💬 Feedback / Issue?
 We are open source project, free feel open PR(s) for make this package better.
 Join server discord for support [discord.gg/fperp](https://discord.gg/wQmKyRm5rx)
+
+#### 📚 Additional source
+Repo: https://github.com/UocDev/timestamp <br>
+Discord Server: https://discord.gg/wQmKyRm5rx <br>
+GitHub: https://github.com <br>
+Node.js: https://nodejs.org <br>
+NPM: https://npmjs.com
