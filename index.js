@@ -14,6 +14,11 @@ const syncTimeFrom = require('./src/timestamp/syncTimeFrom');
 const syncTime = require('./src/timestamp/syncTime');
 const syncAndCorrect = require('./src/timestamp/syncAndCorrect');
 const autoSync = require('./src/timestamp/autoSync');
+const scheduleAt = require('./src/timestamp/scheduleAt');
+const scheduleIn = require('./src/timestamp/scheduleIn');
+const scheduleRepeat = require('./src/timestamp/scheduleRepeat');
+const scheduleCron = require('./src/timestamp/scheduleCron');
+
 
 module.exports = {
   now,
@@ -32,5 +37,9 @@ module.exports = {
   syncTime,
   syncAndCorrect,
   autoSync,
+  scheduleAt,
+  scheduleIn,
+  scheduleRepeat,
+  scheduleCron
 };
 // require some others packages timestamp for good results,  this is still wip but thank you for using my package :D
