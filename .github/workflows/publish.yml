@@ -1,4 +1,4 @@
-name: 🚀 Publish to NPM
+name: 🚀 Publish to NPM with Provenance
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   test-matrix:
-    name: 🔎 Test on Safe LTS
+    name: 🔎 Test on Node.js versions
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,18 +26,21 @@ jobs:
         run: npm install
 
       - name: ✅ Run tests
-        run: npm test # or replace with your own test script
+        run: npm test # Replace with your custom script if needed
 
   publish:
-    name: 📦 Publish to NPM
-    needs: test-matrix # ✅ wait until tests pass
+    name: 📦 Publish to NPM (with Provenance)
+    needs: test-matrix # ✅ Only run if tests passed
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # ✅ REQUIRED for provenance signing
+      contents: read
 
     steps:
       - name: 🧾 Checkout code
         uses: actions/checkout@v4
 
-      - name: 🧰 Setup Node.js 18 (safe publish version)
+      - name: 🧰 Setup Node.js 18
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -48,6 +51,9 @@ jobs:
 
       - name: 📦 Install dependencies
         run: npm install
+
+      - name: ✅ Run tests again on Node.js 18 (safe publish)
+        run: npm test
 
       - name: 🧠 Check if version already published
         id: check-version
@@ -66,8 +72,8 @@ jobs:
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: 🚀 Publish package
+      - name: 🚀 Publish to npm with Provenance
         if: steps.check-version.outputs.skip != 'true'
-        run: npm publish --access public
+        run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
