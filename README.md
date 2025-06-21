@@ -195,4 +195,5 @@ Repo: https://github.com/UocDev/timestamp <br>
 Discord Server: https://discord.gg/wQmKyRm5rx <br>
 GitHub: https://github.com <br>
 Node.js: https://nodejs.org <br>
-NPM: https://npmjs.com
+NPM: https://npmjs.com <br>
+Javascript: https://en.wikipedia.org/wiki/JavaScript
