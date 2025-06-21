@@ -7,11 +7,11 @@ on:
 
 jobs:
   test-matrix:
-    name: 🔎 Test on Safe LTS (18, 20, 22)
+    name: 🔎 Test on Safe LTS
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [18.x, 20.x, 22.x, 23.x]
 
     steps:
       - name: 🧾 Checkout code
