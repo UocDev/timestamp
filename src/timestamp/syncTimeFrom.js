@@ -1,8 +1,15 @@
 const https = require('https');
 
 function syncTimeFrom(url, callback) {
-  https.get(url, (res) => {
+  const options = {
+    headers: {
+      'User-Agent': 'Timestamp-Hasei-Bot/1.0 (https://npmjs.com/package/@uocdev/timestamp-hasei)'
+    }
+  };
+
+  https.get(url, options, (res) => {
     let raw = '';
+
     res.on('data', chunk => raw += chunk);
     res.on('end', () => {
       try {
@@ -20,11 +27,11 @@ function syncTimeFrom(url, callback) {
           raw: json
         });
       } catch (err) {
-        callback(new Error('Failed to parse response'));
+        callback(new Error('❌ Failed to parse API response'));
       }
     });
   }).on('error', (err) => {
-    callback(new Error(`HTTP error: ${err.message}`));
+    callback(new Error(`❌ HTTP error: ${err.message}`));
   });
 }
 
