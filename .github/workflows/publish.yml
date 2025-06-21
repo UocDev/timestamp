@@ -1,4 +1,4 @@
-name: 🚀 Publish to NPM with Provenance
+name: 🍪 Publish npm package
 
 on:
   push:
@@ -7,11 +7,11 @@ on:
 
 jobs:
   test-matrix:
-    name: 🔎 Test on Node.js versions
+    name: 🍪 Test on Node.js versions
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 19.x, 20.x, 21.x, 22.x, 23.x]
+        node-version: [18.x, 19.x, 20.x, 21.x, 22.x, 23.x, 24.x]
 
     steps:
       - name: 🧾 Checkout code
@@ -29,7 +29,7 @@ jobs:
         run: npm test # Replace with your custom script if needed
 
   publish:
-    name: 📦 Publish to NPM (with Provenance)
+    name: 🍪 Test final version Node.js
     needs: test-matrix # ✅ Only run if tests passed
     runs-on: ubuntu-latest
     permissions:
@@ -72,7 +72,7 @@ jobs:
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: 🚀 Publish to npm with Provenance
+      - name: 🍪 Publish to npm
         if: steps.check-version.outputs.skip != 'true'
         run: npm publish --access public --provenance
         env:

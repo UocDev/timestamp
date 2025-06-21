@@ -1,6 +1,5 @@
-// test.js
-const { now } = require('./index');
-const assert = require('assert');
+import now from './index.js';
+import assert from 'assert';
 
 console.log("🧪 Running Timestamp HASEI test...");
 
