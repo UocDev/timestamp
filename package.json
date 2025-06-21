@@ -1,18 +1,8 @@
 {
   "name": "@uocdev/timestamp-hasei",
   "version": "3.0.1",
-  "description": "Timestamp HASEI (High Application Source Encode Init) is a powerful Node.js time library with multi-purpose modules.",
-  "main": "index.js",                       // For CommonJS (require)
-  "module": "index.js",                     // Optional hint for ESM (import)
-  "types": "index.d.ts",                    // TypeScript support
-  "exports": {
-    ".": {
-      "require": "./index.js",
-      "import": "./index.js",
-      "types": "./index.d.ts"
-    }
-  },
-  "type": "commonjs",                      
+  "description": "Timestamp HASEI (High Application Source Encode Init) Is the powerful Node.js library init times. with multi purpose packages",
+  "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
@@ -26,12 +16,7 @@
   "keywords": [
     "timestamp",
     "timezone",
-    "library",
-    "scheduler",
-    "sync",
-    "utc",
-    "encode",
-    "decode"
+    "library"
   ],
   "author": "Uoc",
   "license": "MIT",
