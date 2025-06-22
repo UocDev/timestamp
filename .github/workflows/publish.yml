@@ -29,7 +29,7 @@ jobs:
         run: npm test # Replace with your custom script if needed
 
   publish:
-    name: 🍪 Test final version Node.js
+    name: 🍪 Push repository into NPM
     needs: test-matrix # ✅ Only run if tests passed
     runs-on: ubuntu-latest
     permissions:
