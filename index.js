@@ -23,6 +23,9 @@ const isNumber = require('./src/timestamp/validator');
 const isValidTime = require('./src/timestamp/validator');
 const isValidTimezone = require('./src/timestamp/validator');
 const validator = require('./src/timestamp/validator');
+const formatISO = require('./src/timestamp/formatISO');
+const formatCompact = require('./src/timestamp/formatCompact');
+const formatReadable = require('./src/timestamp/formatReadable');
 
 
 module.exports = {
@@ -50,6 +53,9 @@ module.exports = {
   isNumber,
   isValidTime,
   isValidTimezone,
-  validator
+  validator,
+  formatISO,
+  formatCompact,
+  formatReadable
 };
 // require some others packages timestamp for good results,  this is still wip but thank you for using my package :D
