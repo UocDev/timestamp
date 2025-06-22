@@ -18,6 +18,11 @@ const scheduleAt = require('./src/timestamp/scheduleAt');
 const scheduleIn = require('./src/timestamp/scheduleIn');
 const scheduleRepeat = require('./src/timestamp/scheduleRepeat');
 const scheduleCron = require('./src/timestamp/scheduleCron');
+const isString = require('./src/timestamp/validator');
+const isNumber = require('./src/timestamp/validator');
+const isValidTime = require('./src/timestamp/validator');
+const isValidTimezone = require('./src/timestamp/validator');
+const validator = require('./src/timestamp/validator');
 
 
 module.exports = {
@@ -40,6 +45,11 @@ module.exports = {
   scheduleAt,
   scheduleIn,
   scheduleRepeat,
-  scheduleCron
+  scheduleCron,
+  isString,
+  isNumber,
+  isValidTime,
+  isValidTimezone,
+  validator
 };
 // require some others packages timestamp for good results,  this is still wip but thank you for using my package :D
