@@ -181,6 +181,26 @@ scheduleCron('18:30', (time) => console.log('🕒 CRON triggered at', time.toLoc
 |`scheduleRepeat(ms, cb)`|Repeat every X ms|`10000`|
 |`scheduleCron("HH:MM", cb)`|Schedule at a fixed time every day|`"22:15"`|
 
+### 1.5 Validator
+Example:
+```js
+const { validator } = require('@uocdev/timestamp-hasei');
+
+console.log(validator.isString("Hello"));               // true
+console.log(validator.isNumber("123"));                 // true
+console.log(validator.isValidTime("23:59"));            // true
+console.log(validator.isValidTimezone("Asia/Tokyo"));   // true
+```
+**Method**
+| Function | Description | Example Input | Returns |
+|----------|-------------|---------------|--------|
+|`validator.isString()`|Checks if value is a string|`hello`|`True`|
+|`validator.isNumber()`|Checks if value is a number or numeric string|`123.45`|`True`|
+|`validator.isValidTime()`|Checks if value is valid 24-hour `HH:mm` format|`18.30`|`True`|
+|`validator.isValidTimezone()`|Validates if timezone is IANA-compliant|`Europe/London`|`True`|
+
+
+
 ## 🐞 Know Error
 HTTP Error (Synchronized): Because we use free API this can make you disconnected from timestamp<br>
 Module Not Found: Some module not properly when importing<br>
