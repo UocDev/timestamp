@@ -199,7 +199,21 @@ console.log(validator.isValidTimezone("Asia/Tokyo"));   // true
 |`validator.isValidTime()`|Checks if value is valid 24-hour `HH:mm` format|`18.30`|`True`|
 |`validator.isValidTimezone()`|Validates if timezone is IANA-compliant|`Europe/London`|`True`|
 
+### 1.6 Formatters
+Example:
+```js
+const { formatISO, formatCompact, formatReadable } = require('@uocdev/timestamp-hasei');
 
+console.log(formatISO());        // 2025-06-18T14:55:00.000Z
+console.log(formatCompact());    // 20250618_2155
+console.log(formatReadable());   // Wed, Jun 18, 2025, 21:55
+```
+**Method**
+| Function | Description | Example Output |
+|----------|-------------|----------------|
+|`formatISO()`|ISO-8601 timestamp|`2025-06-18T15:00:00.000Z`|
+|`formatCompact()`|Clean file-friendly format|`20250618_1500`|
+|`formatReadable()`|Human-readable with weekday|`Wed, Jun 18, 2025, 15:00`|
 
 ## 🐞 Know Error
 HTTP Error (Synchronized): Because we use free API this can make you disconnected from timestamp<br>
