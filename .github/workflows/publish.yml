@@ -29,12 +29,13 @@ jobs:
         run: npm test # Replace with your custom script if needed
 
   publish:
-    name: 🍪 Push repository into NPM
+    name: 🍪 Push repository into NPM + GitHub
     needs: test-matrix # ✅ Only run if tests passed
     runs-on: ubuntu-latest
     permissions:
       id-token: write   # ✅ REQUIRED for provenance signing
       contents: read
+      packages: write   # ✅ REQUIRED for GitHub Packages
 
     steps:
       - name: 🧾 Checkout code
@@ -46,7 +47,7 @@ jobs:
           node-version: 18
           registry-url: 'https://registry.npmjs.org/'
 
-      - name: 🔐 Set up npm token
+      - name: 🔐 Set up npm token (npmjs)
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: 📦 Install dependencies
@@ -55,7 +56,7 @@ jobs:
       - name: ✅ Run tests again on Node.js 18 (safe publish)
         run: npm test
 
-      - name: 🧠 Check if version already published
+      - name: 🧠 Check if version already published (npm)
         id: check-version
         run: |
           PKG_NAME=$(node -p "require('./package.json').name")
@@ -77,3 +78,12 @@ jobs:
         run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # 📦 Dual Publish to GitHub Packages (after npmjs)
+      - name: 🔁 Publish to GitHub Packages
+        if: steps.check-version.outputs.skip != 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+          npm publish --registry=https://npm.pkg.github.com/
