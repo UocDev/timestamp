@@ -2,12 +2,9 @@ const [major] = process.versions.node.split('.').map(Number);
 
 if (major < 18 || major >= 26) {
   console.error(`Unsupported Node.js version: ${process.version}`);
-  console.error(`Required: Node.js 18.x or higher`);
+  console.error(`Required: Node.js 18.x or higher. We make this system for safety debugger bugs unknown if use in older versions. Please download new Node or install higher Node :3`);
   process.exit(1);
 }
-
-console.log(`Valid Node.js version: ${process.version}`);
-
 const now = require('./src/timestamp/now');
 const unix = require('./src/timestamp/unix');
 const discordFull = require('./src/timestamp/discordFull');
