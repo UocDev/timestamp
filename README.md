@@ -224,10 +224,16 @@ Import Error/Module Error: We use CommonJS import `const` not use ESM Import (op
 We are open source project, free feel open PR(s) for make this package better.
 Join server discord for support [discord.gg/fperp](https://discord.gg/wQmKyRm5rx)
 
-#### 📚 Additional source
+#### 📚 Additional sources
 Repo: https://github.com/UocDev/timestamp <br>
 Discord Server: https://discord.gg/wQmKyRm5rx <br>
+Discord Developer Docs: https://discord.com/developers/docs/intro <br>
 GitHub: https://github.com <br>
+GitHub Blog: https://github.blog/ <br>
+GitHub Docs: https://docs.github.com/en <br>
 Node.js: https://nodejs.org <br>
+Node.js Docs: https://nodejs.org/docs/latest/api/ <br>
+Node.js Wikipedia: https://en.wikipedia.org/wiki/Node.js <br>
 NPM: https://npmjs.com <br>
-Javascript: https://en.wikipedia.org/wiki/JavaScript
+NPM Docs: https://docs.npmjs.com/ <br>
+Javascript Wikipedia: https://en.wikipedia.org/wiki/JavaScript
