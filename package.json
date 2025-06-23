@@ -3,6 +3,9 @@
   "version": "3.5.10",
   "description": "Timestamp HASEI (High Application Source Encode Init) Is the powerful Node.js library init times. with multi purpose packages",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "node test.js"
   },
