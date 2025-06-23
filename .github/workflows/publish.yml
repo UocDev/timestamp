@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write   # ✅ REQUIRED for provenance signing
-      contents: read
+      contents: read 
       packages: write   # ✅ REQUIRED for GitHub Packages
 
     steps:
@@ -85,5 +85,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc 
           npm publish --registry=https://npm.pkg.github.com/
