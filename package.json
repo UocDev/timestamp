@@ -16,7 +16,12 @@
   "keywords": [
     "timestamp",
     "timezone",
-    "library"
+    "library",
+    "validator",
+    "date",
+    "time",
+    "toolkit",
+    "unix ISO"
   ],
   "author": "Uoc",
   "license": "MIT",
