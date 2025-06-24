@@ -33,7 +33,10 @@ const validator = require('../src/timestamp/validator');
 const formatISO = require('../src/timestamp/formatISO');
 const formatCompact = require('../src/timestamp/formatCompact');
 const formatReadable = require('../src/timestamp/formatReadable');
-
+const isTodayBirthday = require('../src/timestamp/isTodayBirthday');
+const untilBirthday = require('../src/timestamp/untilBirthday');
+const daysUntilBirthday = require('../src/timestamp/daysUntilBirthday');
+const nextBirthdayDate = require('../src/timestamp/nextBirthdayDate');
 
 module.exports = {
   now,
@@ -63,6 +66,10 @@ module.exports = {
   validator,
   formatISO,
   formatCompact,
-  formatReadable
+  formatReadable,
+  isTodayBirthday,
+  untilBirthday,
+  daysUntilBirthday,
+  nextBirthdayDate
 };
 // require some others packages timestamp for good results,  this is still wip but thank you for using my package :D
