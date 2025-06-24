@@ -1,6 +1,6 @@
 {
   "name": "@uocdev/timestamp-hasei",
-  "version": "3.5.19",
+  "version": "3.7.2",
   "description": "Timestamp HASEI (High Application Source Encode Init) Is the powerful Node.js library init times. with multi purpose packages",
   "main": "dist/index.js",
   "scripts": {
