@@ -215,6 +215,30 @@ console.log(formatReadable());   // Wed, Jun 18, 2025, 21:55
 |`formatCompact()`|Clean file-friendly format|`20250618_1500`|
 |`formatReadable()`|Human-readable with weekday|`Wed, Jun 18, 2025, 15:00`|
 
+### 1.7 Birthday
+Example:
+```js
+const {
+  untilBirthday,
+  isTodayBirthday,
+  daysUntilBirthday,
+  nextBirthdayDate
+} = require('@uocdev/timestamp-hasei');
+
+console.log(untilBirthday("11-01"));         // { days: 130, hours: 4, ... }
+console.log(isTodayBirthday("06-18"));       // true or false
+console.log(daysUntilBirthday("11-01"));     // 130
+console.log(nextBirthdayDate("11-01"));      // 2025-11-01T00:00:00.000Z
+```
+**Method**
+| Function | Description | Example Input | Output |
+|----------|-------------|---------------|--------|
+|`untilBirthday()`|Time left until next birthday|`"11-01"`|`{ days, hours, .... }`|
+|`isTodayBirthday()`|Checks if today is the birthday|`"06-18"`|`true / false`|
+|`daysUntilBirthday()`|Days left until next birthday|`"11-01"`|`130`|
+|`nextBirthdayDate()`|Gets next birthday `Date` object|`"11-01"`|`2025-11-01T00:00:00Z`|
+
+
 ## 🐞 Know Error
 HTTP Error (Synchronized): Because we use free API this can make you disconnected from timestamp<br>
 Module Not Found: Some module not properly when importing<br>
