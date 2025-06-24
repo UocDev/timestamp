@@ -130,3 +130,6 @@ out
 
 # Replit debugger
 .breakpoints
+*.replit
+.replit
+replit
